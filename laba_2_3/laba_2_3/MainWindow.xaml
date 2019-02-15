@@ -1,0 +1,30 @@
+﻿<Window x:Class="laba_2_3.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:laba_2_3"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="380.5" Width="186">
+    <Grid>
+        <ListBox x:Name="list_list" HorizontalAlignment="Left" Height="206" Margin="10,30,0,0" VerticalAlignment="Top" Width="100" SelectionChanged="List_list_SelectionChanged"/>
+        <Label x:Name="lab_res" Content="00:00:00" HorizontalAlignment="Left" Margin="10,241,0,0" VerticalAlignment="Top" Height="25" Width="100"/>
+        <Menu HorizontalAlignment="Left" Height="25" VerticalAlignment="Top" Width="186">
+            <MenuItem Header="Файл" Click="MenuItem_Click_1">
+                <MenuItem Header="Открыть" Click="MenuItem_Click_3"/>
+                <MenuItem Header="Сохранить" Click="MenuItem_Click_4"/>
+            </MenuItem>
+            <MenuItem Header="Таймер" Click="MenuItem_Click_2" Height="25">
+                <MenuItem Header="Добавить" Click="MenuItem_Click_5"/>
+                <MenuItem Header="Редактировать" Click="MenuItem_Click_6"/>
+                <MenuItem Header="Удалить" Click="MenuItem_Click_7"/>
+
+            </MenuItem>
+        </Menu>
+        <CheckBox x:Name="check_sec" Content="Секунды" HorizontalAlignment="Left" Margin="10,271,0,0" VerticalAlignment="Top"/>
+        <CheckBox x:Name="check_min" Content="Минуты" HorizontalAlignment="Left" Margin="10,286,0,0" VerticalAlignment="Top"/>
+        <CheckBox x:Name="check_hour" Content="Часы" HorizontalAlignment="Left" Margin="10,301,0,0" VerticalAlignment="Top"/>
+        <CheckBox x:Name="check_day" Content="Дни" HorizontalAlignment="Left" Margin="10,316,0,0" VerticalAlignment="Top"/>
+
+    </Grid>
+</Window>

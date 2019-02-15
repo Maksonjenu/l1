@@ -1,0 +1,7 @@
+C:\Users\geniu\source\repos\laba_2_1\laba_2_1\bin\Debug\laba_2_1.exe.config
+C:\Users\geniu\source\repos\laba_2_1\laba_2_1\bin\Debug\laba_2_1.exe
+C:\Users\geniu\source\repos\laba_2_1\laba_2_1\bin\Debug\laba_2_1.pdb
+C:\Users\geniu\source\repos\laba_2_1\laba_2_1\obj\Debug\laba_2_1.csprojAssemblyReference.cache
+C:\Users\geniu\source\repos\laba_2_1\laba_2_1\obj\Debug\laba_2_1.csproj.CoreCompileInputs.cache
+C:\Users\geniu\source\repos\laba_2_1\laba_2_1\obj\Debug\laba_2_1.exe
+C:\Users\geniu\source\repos\laba_2_1\laba_2_1\obj\Debug\laba_2_1.pdb

@@ -1,0 +1,15 @@
+﻿<Window x:Class="laba_2_2.Window2"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:laba_2_2"
+        mc:Ignorable="d"
+        Title="Window2" Height="282" Width="316">
+    <Grid>
+        <Button x:Name="but" Content="добавить" HorizontalAlignment="Left" Margin="10,38,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
+        <TextBox x:Name="tb1" HorizontalAlignment="Left" Height="23" Margin="10,10,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" TextChanged="TextBox_TextChanged"/>
+        <ListBox x:Name="lt" Height="212" Margin="135,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="143" SelectionChanged="ListBox_SelectionChanged"/>
+
+    </Grid>
+</Window>
