@@ -22,7 +22,8 @@ namespace laba_2_0
     {
         public MainWindow()
         {
-            InitializeComponent();
-        }
+            InitializeComponent();  // будем комментить строки
+        }  // просто бомба
+
     }
 }
