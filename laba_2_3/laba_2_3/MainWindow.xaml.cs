@@ -23,12 +23,65 @@ namespace laba_2_3
     {
 
         Dictionary<string, DateTime> dlist = new Dictionary<string, DateTime>();
+        DateTime dt = new DateTime(1, 1, 1, 0, 0, 0);
+        System.Windows.Threading.DispatcherTimer Timer;
         public MainWindow()
         {
             InitializeComponent();
-            
+            Timer = new System.Windows.Threading.DispatcherTimer();
+            Timer.Tick += new EventHandler(dispatcherTimer_Tick);
+            Timer.Interval = new TimeSpan(0, 0, 0, 1, 0);
         }
+        private void dispatcherTimer_Tick(object sender, EventArgs e)
+        {
+            if (list_list.SelectedIndex > -1)
+            {
+                TimeSpan t = dlist[list_list.SelectedValue.ToString()] - DateTime.Now;
 
+                lab_res.Content = "0:00:00:00";
+
+
+                if ((check_hour.IsChecked == true) && (check_min.IsChecked == false) && (check_sec.IsChecked == false))
+                {
+                    lab_res.Content += ((int)(t.TotalHours)).ToString();
+                }
+
+                if ((check_hour.IsChecked == false) && (check_min.IsChecked == true) && (check_sec.IsChecked == false))
+                {
+                    lab_res.Content += ((int)(t.TotalMinutes)).ToString();
+                }
+
+                if ((check_hour.IsChecked == false) && (check_min.IsChecked == false) && (check_sec.IsChecked == true))
+                {
+                    lab_res.Content += ((int)(t.TotalSeconds)).ToString();
+                }
+
+                if ((check_hour.IsChecked == true) && (check_min.IsChecked == true) && (check_sec.IsChecked == true))
+                {
+                    lab_res.Content += ((int)((t.TotalDays * 24 - t.Minutes / 60 - t.Seconds / 3600))).ToString() + " : ";
+                    lab_res.Content += t.Minutes.ToString() + " : ";
+                    lab_res.Content += t.Seconds.ToString();
+                }
+                //work
+                if ((check_hour.IsChecked == true) && (check_min.IsChecked == true) && (check_sec.IsChecked == false))
+                {
+                    lab_res.Content += ((int)(t.TotalDays * 24 - t.Minutes / 60 - t.Seconds / 3600)).ToString() + " : ";
+                    lab_res.Content += ((int)((t.Minutes + t.Seconds / 60))).ToString();
+                }
+
+                if ((check_hour.IsChecked == false) && (check_min.IsChecked == true) && (check_sec.IsChecked == true))
+                {
+                    lab_res.Content += ((int)((t.TotalMinutes + t.Hours * 60))).ToString() + " : ";
+                    lab_res.Content += t.Seconds.ToString();
+                }
+
+                if ((check_hour.IsChecked == true) && (check_min.IsChecked == false) && (check_sec.IsChecked == true))
+                {
+                    lab_res.Content += ((int)((t.TotalDays * 24 - t.Minutes / 60 - t.Seconds / 3600))).ToString() + " : ";
+                    lab_res.Content += (t.Minutes * 60 + t.Seconds).ToString();
+                }
+            }
+        }
         private void MenuItem_Click_5(object sender, RoutedEventArgs e) //добавить
         {
             Window1 ww1 = new Window1();
@@ -38,7 +91,6 @@ namespace laba_2_3
             {
                 dlist.Add(ww1.name.Text, new DateTime(ww1.calendar.SelectedDate.Value.Year, ww1.calendar.SelectedDate.Value.Month, ww1.calendar.SelectedDate.Value.Day, int.Parse(ww1.hour.Text), int.Parse(ww1.min.Text), int.Parse(ww1.sec.Text)));
                 list_list.Items.Add(ww1.name.Text);
-                //chechk
             }
         }
         private void MenuItem_Click_1(object sender, RoutedEventArgs e) //файл
@@ -51,11 +103,41 @@ namespace laba_2_3
         }
         private void MenuItem_Click_3(object sender, RoutedEventArgs e) // открыть
         {
-           
+            Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog();
+            dlg.FileName = "test";
+            dlg.DefaultExt = ".txt";
+            dlg.Filter = "Text documents (.txt)|*.txt";
+            dlg.ShowDialog();
+            list_list.Items.Clear();
+            dlist.Clear();
+            string line;
+            System.IO.StreamReader file = new System.IO.StreamReader(dlg.FileName);
+            while ((line = file.ReadLine()) != null)
+            {
+                string name = line;
+                line = file.ReadLine();
+                if (line == null) break;
+                DateTime dt = DateTime.Parse(line);
+                list_list.Items.Add(name);
+                dlist.Add(name, dt);
+            }
+            file.Close();
         }
         private void MenuItem_Click_4(object sender, RoutedEventArgs e) // сохранить
         {
-           
+            Microsoft.Win32.SaveFileDialog dlg = new Microsoft.Win32.SaveFileDialog();
+            dlg.FileName = "test";
+            dlg.DefaultExt = ".txt";
+            dlg.Filter = "Text documents (.txt)|*.txt";
+            dlg.ShowDialog();
+            using (System.IO.StreamWriter outputFile = new System.IO.StreamWriter(dlg.FileName))
+            {
+                foreach (KeyValuePair<string, DateTime> kvp in dlist)
+                {
+                    outputFile.WriteLine(kvp.Key);
+                    outputFile.WriteLine(kvp.Value.ToString());
+                }
+            }
         }
         private void MenuItem_Click_6(object sender, RoutedEventArgs e) //редактировать
         {
@@ -63,17 +145,16 @@ namespace laba_2_3
         }
         private void MenuItem_Click_7(object sender, RoutedEventArgs e) //удалить
         {
-            
+            if (list_list.SelectedIndex > -1)
+            {
+                dlist.Remove(list_list.SelectedValue.ToString());
+                list_list.Items.Remove(list_list.SelectedValue.ToString());
+            }
         }
 
         private void List_list_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            switch(list_list.SelectedIndex)
-            {
-                case (0):
-                    
-                    break;
-            }
+            Timer.Start();
         }
     }
 }
