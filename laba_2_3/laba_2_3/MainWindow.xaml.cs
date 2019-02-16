@@ -38,6 +38,7 @@ namespace laba_2_3
             {
                 dlist.Add(ww1.name.Text, new DateTime(ww1.calendar.SelectedDate.Value.Year, ww1.calendar.SelectedDate.Value.Month, ww1.calendar.SelectedDate.Value.Day, int.Parse(ww1.hour.Text), int.Parse(ww1.min.Text), int.Parse(ww1.sec.Text)));
                 list_list.Items.Add(ww1.name.Text);
+                //chechk
             }
         }
         private void MenuItem_Click_1(object sender, RoutedEventArgs e) //файл
