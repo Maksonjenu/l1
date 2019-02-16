@@ -38,7 +38,7 @@ namespace laba_2_3
             {
                 TimeSpan t = dlist[list_list.SelectedValue.ToString()] - DateTime.Now;
 
-                lab_res.Content = "0:00:00:00";
+                lab_res.Content = "";
 
 
                 if ((check_hour.IsChecked == true) && (check_min.IsChecked == false) && (check_sec.IsChecked == false))
@@ -62,7 +62,6 @@ namespace laba_2_3
                     lab_res.Content += t.Minutes.ToString() + " : ";
                     lab_res.Content += t.Seconds.ToString();
                 }
-                //work
                 if ((check_hour.IsChecked == true) && (check_min.IsChecked == true) && (check_sec.IsChecked == false))
                 {
                     lab_res.Content += ((int)(t.TotalDays * 24 - t.Minutes / 60 - t.Seconds / 3600)).ToString() + " : ";
