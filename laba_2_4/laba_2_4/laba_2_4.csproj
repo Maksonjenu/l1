@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{54B11C69-59EB-4562-BA27-E3EE2E30AFA0}</ProjectGuid>
+    <ProjectGuid>{34F14C7B-650A-4C19-AA2C-6FAA23961454}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>laba_2_4</RootNamespace>
     <AssemblyName>laba_2_4</AssemblyName>
@@ -38,7 +38,7 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.SQLite">
-      <HintPath>..\..\..\..\..\..\Program Files (x86)\Microsoft Visual Studio\2017\Community\SQlite\System.Data.SQLite.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Microsoft Visual Studio\2017\Community\SQlite\System.Data.SQLite.dll</HintPath>
     </Reference>
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />

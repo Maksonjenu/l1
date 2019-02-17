@@ -40,7 +40,7 @@ namespace laba_2_3
 
                 lab_res.Content = "";
 
-
+                //добавить поодержку дней + 2^4 = 16 "кейсов
                 if ((check_hour.IsChecked == true) && (check_min.IsChecked == false) && (check_sec.IsChecked == false))
                 {
                     lab_res.Content += ((int)(t.TotalHours)).ToString();
@@ -103,7 +103,7 @@ namespace laba_2_3
         private void MenuItem_Click_3(object sender, RoutedEventArgs e) // открыть
         {
             Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog();
-            dlg.FileName = "test";
+            dlg.FileName = "date";
             dlg.DefaultExt = ".txt";
             dlg.Filter = "Text documents (.txt)|*.txt";
             dlg.ShowDialog();
@@ -125,7 +125,7 @@ namespace laba_2_3
         private void MenuItem_Click_4(object sender, RoutedEventArgs e) // сохранить
         {
             Microsoft.Win32.SaveFileDialog dlg = new Microsoft.Win32.SaveFileDialog();
-            dlg.FileName = "test";
+            dlg.FileName = "date";
             dlg.DefaultExt = ".txt";
             dlg.Filter = "Text documents (.txt)|*.txt";
             dlg.ShowDialog();

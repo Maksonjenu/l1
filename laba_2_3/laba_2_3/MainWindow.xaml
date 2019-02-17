@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="380.5" Width="186">
     <Grid>
-        <ListBox x:Name="list_list" HorizontalAlignment="Left" Height="206" Margin="10,30,0,0" VerticalAlignment="Top" Width="100" SelectionChanged="List_list_SelectionChanged"/>
+        <ListBox x:Name="list_list" HorizontalAlignment="Left" Height="206" Margin="10,30,0,0" VerticalAlignment="Top" Width="158" SelectionChanged="List_list_SelectionChanged"/>
         <Label x:Name="lab_res" Content="00:00:00" HorizontalAlignment="Left" Margin="10,241,0,0" VerticalAlignment="Top" Height="25" Width="100"/>
         <Menu HorizontalAlignment="Left" Height="25" VerticalAlignment="Top" Width="186">
             <MenuItem Header="Файл" Click="MenuItem_Click_1">
