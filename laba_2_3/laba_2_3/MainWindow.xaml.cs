@@ -31,54 +31,97 @@ namespace laba_2_3
             Timer = new System.Windows.Threading.DispatcherTimer();
             Timer.Tick += new EventHandler(dispatcherTimer_Tick);
             Timer.Interval = new TimeSpan(0, 0, 0, 1, 0);
+            
         }
         private void dispatcherTimer_Tick(object sender, EventArgs e)
         {
             if (list_list.SelectedIndex > -1)
             {
                 TimeSpan t = dlist[list_list.SelectedValue.ToString()] - DateTime.Now;
+                
 
                 lab_res.Content = "";
 
-                //добавить поодержку дней + 2^4 = 16 "кейсов
-                if ((check_hour.IsChecked == true) && (check_min.IsChecked == false) && (check_sec.IsChecked == false))
+                
+                if ((check_day.IsChecked == false) && (check_hour.IsChecked == true) && (check_min.IsChecked == false) && (check_sec.IsChecked == false))
                 {
-                    lab_res.Content += ((int)(t.TotalHours)).ToString();
+                    lab_res.Content += ((int)(t.TotalHours)).ToString() + "h";
+                }
+                if ((check_day.IsChecked == false) && (check_hour.IsChecked == false) && (check_min.IsChecked == true) && (check_sec.IsChecked == false))
+                {
+                    lab_res.Content += ((int)(t.TotalMinutes)).ToString() + "m";
+                }
+                if ((check_day.IsChecked == false) && (check_hour.IsChecked == false) && (check_min.IsChecked == false) && (check_sec.IsChecked == true))
+                {
+                    lab_res.Content += ((int)(t.TotalSeconds)).ToString() + "s";
+                }
+                if ((check_day.IsChecked == false) && (check_hour.IsChecked == true) && (check_min.IsChecked == true) && (check_sec.IsChecked == true))
+                {
+                    lab_res.Content += ((int)((t.TotalDays * 24 - t.Minutes / 60 - t.Seconds / 3600))).ToString() + "h : ";
+                    lab_res.Content += t.Minutes.ToString() + "m : ";
+                    lab_res.Content += t.Seconds.ToString() + "s";
+                }
+                if ((check_day.IsChecked == false) && (check_hour.IsChecked == true) && (check_min.IsChecked == true) && (check_sec.IsChecked == false))
+                {
+                    lab_res.Content += ((int)(t.TotalDays * 24 - t.Minutes / 60 - t.Seconds / 3600)).ToString() + "h : ";
+                    lab_res.Content += ((int)((t.Minutes + t.Seconds / 60))).ToString() + "m ";
+                }
+                if ((check_day.IsChecked == false) && (check_hour.IsChecked == false) && (check_min.IsChecked == true) && (check_sec.IsChecked == true))
+                {
+                    lab_res.Content += ((int)((t.TotalMinutes + t.Hours * 60))).ToString() + "m : ";
+                    lab_res.Content += t.Seconds.ToString() + "s";
+                }
+                if ((check_day.IsChecked == false) && (check_hour.IsChecked == true) && (check_min.IsChecked == false) && (check_sec.IsChecked == true))
+                {
+                    lab_res.Content += ((int)((t.TotalDays * 24 - t.Minutes / 60 - t.Seconds / 3600))).ToString() + "h : ";
+                    lab_res.Content += (t.Minutes * 60 + t.Seconds).ToString() + "s";
+                }
+                if ((check_day.IsChecked == true) && (check_hour.IsChecked == true) && (check_min.IsChecked == false) && (check_sec.IsChecked == false))
+                {
+                    lab_res.Content += ((int)t.TotalDays).ToString() + "d : ";
+                    lab_res.Content += ((int)((t.TotalDays * 24 - t.Minutes / 60 - t.Seconds / 3600))).ToString() + "h";
+                }
+                if ((check_day.IsChecked == true) && (check_hour.IsChecked == true) && (check_min.IsChecked == false) && (check_sec.IsChecked == true))
+                {
+                    lab_res.Content += ((int)t.TotalDays).ToString() + "d : ";
+                    lab_res.Content += ((int)((t.TotalDays * 24 - t.Minutes / 60 - t.Seconds / 3600))).ToString() + "h : ";
+                    lab_res.Content += (t.Minutes * 60 + t.Seconds).ToString() + "s";
+
+                }
+                if ((check_day.IsChecked == true) && (check_hour.IsChecked == true) && (check_min.IsChecked == true) && (check_sec.IsChecked == false))
+                {
+                    lab_res.Content += ((int)t.TotalDays).ToString() + "d : ";
+                    lab_res.Content += ((int)((t.TotalDays * 24 - t.Minutes / 60 - t.Seconds / 3600))).ToString() + "h : ";
+                    lab_res.Content += ((int)((t.Minutes + t.Seconds / 60))).ToString() + "m";
+                }
+                if ((check_day.IsChecked == true) && (check_hour.IsChecked == true) && (check_min.IsChecked == true) && (check_sec.IsChecked == true))
+                {
+                    lab_res.Content += ((int)t.TotalDays).ToString() + "d : ";
+                    lab_res.Content += ((int)((t.TotalDays * 24 - t.Minutes / 60 - t.Seconds / 3600))).ToString() + "h : ";
+                    lab_res.Content += ((int)((t.Minutes + t.Seconds / 60))).ToString() + "m : ";
+                    lab_res.Content += t.Seconds.ToString() + "s";
+                }
+                if ((check_day.IsChecked == true) && (check_hour.IsChecked == false) && (check_min.IsChecked == false) && (check_sec.IsChecked == false))
+                {
+                    lab_res.Content += ((int)t.TotalDays).ToString() + "d";
+                }
+                if ((check_day.IsChecked == true) && (check_hour.IsChecked == false) && (check_min.IsChecked == false) && (check_sec.IsChecked == true))
+                {
+                    lab_res.Content += ((int)t.TotalDays).ToString() + "d : ";
+                    lab_res.Content += t.Seconds.ToString() + "s";
+                }
+                if ((check_day.IsChecked == true) && (check_hour.IsChecked == false) && (check_min.IsChecked == true) && (check_sec.IsChecked == false))
+                {
+                    lab_res.Content += ((int)t.TotalDays).ToString() + "d : ";
+                    lab_res.Content += ((int)((t.Minutes + t.Seconds / 60))).ToString() + "m";
+                }
+                if ((check_day.IsChecked == true) && (check_hour.IsChecked == false) && (check_min.IsChecked == true) && (check_sec.IsChecked == true))
+                {
+                    lab_res.Content += ((int)t.TotalDays).ToString() + "d : ";
+                    lab_res.Content += ((int)((t.Minutes + t.Seconds / 60))).ToString() + "m : ";
+                    lab_res.Content += t.Seconds.ToString() + "s";
                 }
 
-                if ((check_hour.IsChecked == false) && (check_min.IsChecked == true) && (check_sec.IsChecked == false))
-                {
-                    lab_res.Content += ((int)(t.TotalMinutes)).ToString();
-                }
-
-                if ((check_hour.IsChecked == false) && (check_min.IsChecked == false) && (check_sec.IsChecked == true))
-                {
-                    lab_res.Content += ((int)(t.TotalSeconds)).ToString();
-                }
-
-                if ((check_hour.IsChecked == true) && (check_min.IsChecked == true) && (check_sec.IsChecked == true))
-                {
-                    lab_res.Content += ((int)((t.TotalDays * 24 - t.Minutes / 60 - t.Seconds / 3600))).ToString() + " : ";
-                    lab_res.Content += t.Minutes.ToString() + " : ";
-                    lab_res.Content += t.Seconds.ToString();
-                }
-                if ((check_hour.IsChecked == true) && (check_min.IsChecked == true) && (check_sec.IsChecked == false))
-                {
-                    lab_res.Content += ((int)(t.TotalDays * 24 - t.Minutes / 60 - t.Seconds / 3600)).ToString() + " : ";
-                    lab_res.Content += ((int)((t.Minutes + t.Seconds / 60))).ToString();
-                }
-
-                if ((check_hour.IsChecked == false) && (check_min.IsChecked == true) && (check_sec.IsChecked == true))
-                {
-                    lab_res.Content += ((int)((t.TotalMinutes + t.Hours * 60))).ToString() + " : ";
-                    lab_res.Content += t.Seconds.ToString();
-                }
-
-                if ((check_hour.IsChecked == true) && (check_min.IsChecked == false) && (check_sec.IsChecked == true))
-                {
-                    lab_res.Content += ((int)((t.TotalDays * 24 - t.Minutes / 60 - t.Seconds / 3600))).ToString() + " : ";
-                    lab_res.Content += (t.Minutes * 60 + t.Seconds).ToString();
-                }
             }
         }
         private void MenuItem_Click_5(object sender, RoutedEventArgs e) //добавить
