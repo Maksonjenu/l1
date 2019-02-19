@@ -11,7 +11,11 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
-using System.Windows.Shapes;
+using System.IO;
+using System.IO.Compression;
+using System.Diagnostics;
+using System.Net;
+using System.Net.Mail;
 
 
 namespace laba_2_3
@@ -31,7 +35,8 @@ namespace laba_2_3
             Timer = new System.Windows.Threading.DispatcherTimer();
             Timer.Tick += new EventHandler(dispatcherTimer_Tick);
             Timer.Interval = new TimeSpan(0, 0, 0, 1, 0);
-            
+           
+
         }
         private void dispatcherTimer_Tick(object sender, EventArgs e)
         {

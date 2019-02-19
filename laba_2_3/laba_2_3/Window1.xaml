@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:laba_2_3"
         mc:Ignorable="d"
-        Title="Window1" Height="330" Width="239">
+        Title="Window1" Height="606.528" Width="498.722">
     <Grid>
         <Calendar x:Name="calendar" HorizontalAlignment="Left" Margin="10,65,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="name" HorizontalAlignment="Left" Height="23" Margin="10,10,0,0" TextWrapping="Wrap" Text="Название таймера" VerticalAlignment="Top" Width="179" MouseDoubleClick="Name_MouseDoubleClick"/>
@@ -14,6 +14,7 @@
         <TextBox x:Name="sec" HorizontalAlignment="Left" Height="22" Margin="134,38,0,0" TextWrapping="Wrap" Text="сек" VerticalAlignment="Top" Width="55"/>
         <Button Content="Добавить" HorizontalAlignment="Left" Margin="10,238,0,0" VerticalAlignment="Top" Width="88" Height="40" Click="Button_Click"/>
         <Button Content="Отмена" HorizontalAlignment="Left" Margin="103,238,0,0" VerticalAlignment="Top" Width="86" Height="40" Click="Button_Click_1"/>
+        <ListBox x:Name="lb" HorizontalAlignment="Left" Height="556" Margin="194,10,0,0" VerticalAlignment="Top" Width="287" SelectionChanged="Lb_SelectionChanged"/>
 
     </Grid>
 </Window>
