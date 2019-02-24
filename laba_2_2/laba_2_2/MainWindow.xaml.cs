@@ -74,7 +74,11 @@ namespace laba_2_2
 
         private void Window_KeyUp(object sender, KeyEventArgs e)
         {
-            
+            Window6 ww6 = new Window6();
+            ww6.Owner = this;
+            ww6.Show();
+            MessageBox.Show("");
         }
     }
 }
+    
