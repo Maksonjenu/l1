@@ -74,7 +74,7 @@ namespace laba_2_2
 
         private void Window_KeyUp(object sender, KeyEventArgs e)
         {
-            MessageBox.Show("OP SECRET");
+            
         }
     }
 }
