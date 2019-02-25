@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.421
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Laba_2_5_server", "Laba_2_5\Laba_2_5_server.csproj", "{8BF7382A-2F11-4BA1-A3EF-1D6A05509D4D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "laba_2_5_client", "laba_2_5_client\laba_2_5_client.csproj", "{F072514D-0DF1-47C6-9FBE-AF6800F2BA08}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8BF7382A-2F11-4BA1-A3EF-1D6A05509D4D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8BF7382A-2F11-4BA1-A3EF-1D6A05509D4D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8BF7382A-2F11-4BA1-A3EF-1D6A05509D4D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8BF7382A-2F11-4BA1-A3EF-1D6A05509D4D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F072514D-0DF1-47C6-9FBE-AF6800F2BA08}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F072514D-0DF1-47C6-9FBE-AF6800F2BA08}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F072514D-0DF1-47C6-9FBE-AF6800F2BA08}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F072514D-0DF1-47C6-9FBE-AF6800F2BA08}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E31F5686-E872-4270-8DB5-231BABC8C207}
+	EndGlobalSection
+EndGlobal
