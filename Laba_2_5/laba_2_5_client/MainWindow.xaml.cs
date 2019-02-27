@@ -24,6 +24,7 @@ namespace laba_2_5_client
     /// </summary>
     public partial class MainWindow : Window
     {
+       
         public string userName;
         public string message;
         const int port = 8888;
@@ -32,13 +33,14 @@ namespace laba_2_5_client
         public MainWindow()
         {
             InitializeComponent();
-            
+            userName = name.Text;
+
         }
 
         private void Count1()
         {
            
-            Dispatcher.BeginInvoke(new Action(() => userName = name.Text));
+            
 
             //объявление TCP клиента
             TcpClient client = null;
@@ -50,7 +52,7 @@ namespace laba_2_5_client
                 NetworkStream stream = client.GetStream();
                 //цикл обмена сообщениями
 
-                Dispatcher.BeginInvoke(new Action(() => _out.Text += (userName + ": "+" \r  \n")));
+//                Dispatcher.BeginInvoke(new Action(() => _out.Text += (userName + ": "+" \r  \n")));
                 //ввод сообщения
                 Dispatcher.BeginInvoke(new Action(() =>  message = _in.Text));
                
@@ -73,6 +75,9 @@ namespace laba_2_5_client
                 while (stream.DataAvailable);
                 Dispatcher.BeginInvoke(new Action(() => message = builder.ToString()));
                 Dispatcher.BeginInvoke(new Action(() => _out.Text += ("Сервер:" + message)));
+                stream.Close();
+                client.Close();
+                
             }
 
             catch (Exception ex)
@@ -88,6 +93,7 @@ namespace laba_2_5_client
         {
             Thread myThread1 = new Thread(new ThreadStart(Count1));
             myThread1.Start();
+           
            
         }
     }

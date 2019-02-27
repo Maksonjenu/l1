@@ -98,6 +98,7 @@ namespace Laba_2_5
                     //отправка сообщения обратно клиенту
                     stream.Write(data, 0, data.Length);
                 
+
             }
             catch (Exception ex)
             {
