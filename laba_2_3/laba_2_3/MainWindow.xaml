@@ -11,8 +11,8 @@
         <Label x:Name="lab_res" Content="00:00:00" HorizontalAlignment="Left" Margin="10,241,0,0" VerticalAlignment="Top" Height="25" Width="158" FontSize="14"/>
         <Menu HorizontalAlignment="Left" Height="25" VerticalAlignment="Top" Width="335">
             <MenuItem Header="Файл" Click="MenuItem_Click_1">
-                <MenuItem Header="Открыть" Click="MenuItem_Click_3"/>
                 <MenuItem Header="Сохранить" Click="MenuItem_Click_4"/>
+                <MenuItem Header="Открыть" Click="MenuItem_Click_3"/>
             </MenuItem>
             <MenuItem Header="Таймер" Click="MenuItem_Click_2" Height="25">
                 <MenuItem Header="Добавить" Click="MenuItem_Click_5"/>

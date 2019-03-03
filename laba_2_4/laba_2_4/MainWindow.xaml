@@ -5,8 +5,33 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:laba_2_4"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
+        Title="jojo" Height="342" Width="618">
+    <Grid Margin="0,0,2,2">
+        <Menu HorizontalAlignment="Left" Height="25" VerticalAlignment="Top" Width="792">
+            <MenuItem Header=" Файл" Height="25" Width="58">
+                <MenuItem Header="Открыть" Click="MenuItem_Click_3"/>
+                <MenuItem Header="Сохранить" Click="MenuItem_Click_4"/>
+
+            </MenuItem>
+            <MenuItem Header="Редактировать" Height="25" Width="94">
+                <MenuItem Header="Удалить элемент" Click="MenuItem_Click"/>
+                <MenuItem Header="Изменить выбранный элемент" Click="MenuItem_Click_1"/>
+                <MenuItem Header="Добавить новый элемент" Click="MenuItem_Click_2"/>
+
+            </MenuItem>
+        </Menu>
+        <DataGrid x:Name="somegrid" HorizontalAlignment="Left" Height="229" Margin="172,30,0,0" VerticalAlignment="Top" Width="411" SelectedCellsChanged="Somegrid_SelectedCellsChanged">
+
+        </DataGrid>
+        <TextBox x:Name="textbox_name" HorizontalAlignment="Left" Height="23" Margin="10,59,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="125"/>
+        <Label Content="ФИО" HorizontalAlignment="Left" Margin="10,33,0,0" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="text_mark_math" HorizontalAlignment="Left" Height="23" Margin="10,118,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="50"/>
+        <TextBox x:Name="text_mark_phys" HorizontalAlignment="Left" Height="23" Margin="10,177,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="50"/>
+        <Label Content="Математика" HorizontalAlignment="Left" Margin="10,87,0,0" VerticalAlignment="Top" Width="77"/>
+        <Label Content="Физика" HorizontalAlignment="Left" Margin="10,146,0,0" VerticalAlignment="Top" Width="101"/>
+        <Label Content="Uid" HorizontalAlignment="Left" Margin="10,205,0,0" VerticalAlignment="Top" Width="101"/>
+        <TextBox x:Name="text_uid" HorizontalAlignment="Left" Height="23" Margin="10,236,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="50"/>
+        <Label x:Name="path" Content="" HorizontalAlignment="Left" Margin="10,273,0,0" VerticalAlignment="Top" Width="588"/>
     </Grid>
+
 </Window>

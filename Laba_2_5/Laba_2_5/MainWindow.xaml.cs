@@ -37,12 +37,7 @@ namespace Laba_2_5
   
         public void Count1()
         {
-            //создание объекта для отслеживания сообщений
-            //переданных с ip адреса через порт
-            listener = new TcpListener(IPAddress.Parse("127.0.0.1"), port);
-            //начало прослушивания
- 
-            listener.Start();
+
             Dispatcher.BeginInvoke(new Action(() => listBox.Items.Add("коннектионц ")));
 
             //цикл подключения клиентов
@@ -58,8 +53,17 @@ namespace Laba_2_5
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             //создание нового потока из функции Count1
+            //создание объекта для отслеживания сообщений
+            //переданных с ip адреса через порт
+            listener = new TcpListener(IPAddress.Parse("127.0.0.1"), port);
+            //начало прослушивания
+
+            listener.Start();
+
             Thread myThread1 = new Thread(new ThreadStart(Count1));
+
             myThread1.Start(); 
+
            
         }
         //функция, вызываемая в потоке

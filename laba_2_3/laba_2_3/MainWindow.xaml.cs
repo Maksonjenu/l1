@@ -15,7 +15,6 @@ using System.IO;
 using System.IO.Compression;
 using System.Diagnostics;
 using System.Net;
-using System.Net.Mail;
 
 
 namespace laba_2_3
@@ -188,7 +187,26 @@ namespace laba_2_3
         }
         private void MenuItem_Click_6(object sender, RoutedEventArgs e) //редактировать
         {
-          
+            Window1 ww1 = new Window1();
+
+            if (list_list.SelectedIndex > -1)
+            {
+                ww1.name.Text = list_list.SelectedValue.ToString();
+                ww1.hour.Text = dlist[list_list.SelectedValue.ToString()].Hour.ToString();
+                ww1.min.Text = dlist[list_list.SelectedValue.ToString()].Minute.ToString();
+                ww1.sec.Text = dlist[list_list.SelectedValue.ToString()].Second.ToString();
+                ww1.calendar.SelectedDate = dlist[list_list.SelectedValue.ToString()].Date;
+
+                if (ww1.ShowDialog() == true)
+                {
+                    dlist.Remove(list_list.SelectedValue.ToString());
+                    list_list.Items.Remove(list_list.SelectedValue.ToString());
+
+                    dlist.Add(ww1.name.Text, new DateTime(ww1.calendar.SelectedDate.Value.Year, ww1.calendar.SelectedDate.Value.Month, ww1.calendar.SelectedDate.Value.Day, int.Parse(ww1.hour.Text), int.Parse(ww1.min.Text), int.Parse(ww1.sec.Text)));
+                    list_list.Items.Add(ww1.name.Text);
+
+                }
+            }
         }
         private void MenuItem_Click_7(object sender, RoutedEventArgs e) //удалить
         {
