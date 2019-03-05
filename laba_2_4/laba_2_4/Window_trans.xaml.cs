@@ -26,16 +26,19 @@ namespace laba_2_4
             SQLiteConnection m_dbConnection;
             m_dbConnection = new SQLiteConnection("Data Source=" + paths + ";Version=3;");
             m_dbConnection.Open();
-            string sql = "SELECT * FROM marks, name WHERE name.uid = " + (numb); //прописывает все значения до конца списка фикси падла 
+            string sql = "SELECT * FROM marks, name WHERE name.uid = " + (numb); 
             SQLiteCommand command1 = new SQLiteCommand(sql, m_dbConnection);
             SQLiteDataReader reader = command1.ExecuteReader();
             while (reader.Read())
             {
-                int a = Convert.ToInt32(reader["uid"])+1;
-                lb_uid.Content = "Uid - "+ a.ToString();
-                tb_fio.Text = reader["fio"].ToString();
-                tb_phys.Text = reader["phys"].ToString();
-                tb_math.Text = reader["math"].ToString();
+                if (Convert.ToInt32(reader["uid"]) == numb)
+                {
+                    int a = Convert.ToInt32(reader["uid"]);
+                    lb_uid.Content = "Uid - " + a.ToString();
+                    tb_fio.Text = reader["fio"].ToString();
+                    tb_phys.Text = reader["phys"].ToString();
+                    tb_math.Text = reader["math"].ToString();
+                }
             }
         }
 

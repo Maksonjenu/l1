@@ -5,22 +5,22 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:laba_2_4"
         mc:Ignorable="d"
-        Title="jojo" Height="342" Width="618">
+        Title="jojo" Height="342" Width="475.5">
     <Grid Margin="0,0,2,2">
         <Menu HorizontalAlignment="Left" Height="25" VerticalAlignment="Top" Width="792">
             <MenuItem Header=" Файл" Height="25" Width="58">
-                <MenuItem Header="Открыть" Click="MenuItem_Click_3"/>
-                <MenuItem Header="Сохранить" Click="MenuItem_Click_4"/>
+                <MenuItem x:Name="open" Header="Открыть" Click="MenuItem_Click_3"/>
+                <MenuItem x:Name="save" Header="Сохранить" Click="MenuItem_Click_4"/>
 
             </MenuItem>
             <MenuItem Header="Редактировать" Height="25" Width="94">
-                <MenuItem Header="Удалить элемент" Click="MenuItem_Click"/>
-                <MenuItem Header="Изменить выбранный элемент" Click="MenuItem_Click_1"/>
-                <MenuItem Header="Добавить новый элемент" Click="MenuItem_Click_2"/>
+                <MenuItem x:Name="delete" Header="Удалить элемент" Click="MenuItem_Click"/>
+                <MenuItem x:Name="rename" Header="Изменить выбранный элемент" Click="MenuItem_Click_1"/>
+                <MenuItem x:Name="addelem" Header="Добавить новый элемент" Click="MenuItem_Click_2"/>
 
             </MenuItem>
         </Menu>
-        <DataGrid x:Name="somegrid" HorizontalAlignment="Left" Height="229" Margin="172,30,0,0" VerticalAlignment="Top" Width="411" SelectedCellsChanged="Somegrid_SelectedCellsChanged">
+        <DataGrid x:Name="somegrid" HorizontalAlignment="Left" Height="229" Margin="172,30,0,0" VerticalAlignment="Top" Width="280" SelectedCellsChanged="Somegrid_SelectedCellsChanged">
 
         </DataGrid>
         <TextBox x:Name="textbox_name" HorizontalAlignment="Left" Height="23" Margin="10,59,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="125"/>
