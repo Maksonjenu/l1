@@ -32,6 +32,7 @@
         <Label Content="Uid" HorizontalAlignment="Left" Margin="10,205,0,0" VerticalAlignment="Top" Width="101"/>
         <TextBox x:Name="text_uid" HorizontalAlignment="Left" Height="23" Margin="10,236,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="50"/>
         <Label x:Name="path" Content="" HorizontalAlignment="Left" Margin="10,273,0,0" VerticalAlignment="Top" Width="588"/>
+        <Button Content="update" HorizontalAlignment="Left" Margin="172,273,0,0" VerticalAlignment="Top" Width="100" Height="26" Click="Button_Click"/>
     </Grid>
 
 </Window>

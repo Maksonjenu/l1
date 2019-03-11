@@ -36,15 +36,13 @@ namespace laba_2_4
 
         public MainWindow()
         {
-            InitializeComponent();
-            textbox_name.IsReadOnly = true;
-            text_mark_phys.IsReadOnly = true;
-            text_mark_math.IsReadOnly = true;
+            InitializeComponent();         
             text_uid.IsReadOnly = true;
             save.IsEnabled = false;
             delete.IsEnabled = false;
             rename.IsEnabled = false;
             addelem.IsEnabled = false;
+            text_uid.IsReadOnly = true;
         }
 
         private void MenuItem_Click_4(object sender, RoutedEventArgs e) //save
@@ -112,35 +110,39 @@ namespace laba_2_4
         }
 
         private void MenuItem_Click_1(object sender, RoutedEventArgs e) //изменить чузен элемент
-        {
-            try
-            {
-                if (somegrid.SelectedIndex == -1) throw new ArgumentException("Не выбран элемент");
-                Window_trans trans = new Window_trans(ref studs, studs[somegrid.SelectedIndex].uid, db_name)
-                {
-                    Owner = this
-                };
-                if (trans.ShowDialog() == true)
-                {
-                    SQLiteConnection m_dbConnection;
-                    m_dbConnection = new SQLiteConnection("Data Source=" + db_name + ";Version=3;");
-                    m_dbConnection.Open();
-                    string sql1 = "UPDATE name SET fio ='" + trans.tb_fio.Text + "' WHERE uid =" + somegrid.SelectedIndex + "; UPDATE marks SET phys =" + trans.tb_phys.Text + ", math ="+ trans.tb_math.Text + " WHERE uid =" + somegrid.SelectedIndex;
-                    SQLiteCommand command = new SQLiteCommand(sql1, m_dbConnection);
-                    command.ExecuteNonQuery();
-                    studs[somegrid.SelectedIndex].fio = trans.tb_fio.Text;
-                    ((data)somegrid.Items[somegrid.SelectedIndex]).fio = trans.tb_fio.Text;
-                    ((data)somegrid.Items[somegrid.SelectedIndex]).math = int.Parse(trans.tb_math.Text);
-                    ((data)somegrid.Items[somegrid.SelectedIndex]).phys = int.Parse(trans.tb_phys.Text);
-                    somegrid.Items.Refresh();
-                }
-            }
-            catch (ArgumentException ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
+                                                                        /*  {
+                                                                              try
+                                                                              {
+                                                                                  if (somegrid.SelectedIndex == -1) throw new ArgumentException("Не выбран элемент");
+                                                                                  Window_trans trans = new Window_trans(ref studs, studs[somegrid.SelectedIndex].uid, db_name)
+                                                                                  {
+                                                                                      Owner = this
+                                                                                  };
+                                                                                  if (trans.ShowDialog() == true)
+                                                                                  {
+                                                                                      SQLiteConnection m_dbConnection;
+                                                                                      m_dbConnection = new SQLiteConnection("Data Source=" + db_name + ";Version=3;");
+                                                                                      m_dbConnection.Open();
+                                                                                      string sql1 = "UPDATE name SET fio ='" + trans.tb_fio.Text + "' WHERE uid =" + somegrid.SelectedIndex + "; UPDATE marks SET phys =" + trans.tb_phys.Text + ", math ="+ trans.tb_math.Text + " WHERE uid =" + somegrid.SelectedIndex;
+                                                                                      SQLiteCommand command = new SQLiteCommand(sql1, m_dbConnection);
+                                                                                      command.ExecuteNonQuery();
+                                                                                      studs[somegrid.SelectedIndex].fio = trans.tb_fio.Text;
+                                                                                      ((data)somegrid.Items[somegrid.SelectedIndex]).fio = trans.tb_fio.Text;
+                                                                                      ((data)somegrid.Items[somegrid.SelectedIndex]).math = int.Parse(trans.tb_math.Text);
+                                                                                      ((data)somegrid.Items[somegrid.SelectedIndex]).phys = int.Parse(trans.tb_phys.Text);
+                                                                                      somegrid.Items.Refresh();
+                                                                                      m_dbConnection.Close();
+                                                                                  }
+                                                                              }
+                                                                              catch (ArgumentException ex)
+                                                                              {
+                                                                                  MessageBox.Show(ex.Message);
+                                                                              }
 
-        }
+                                                                          }
+                                                                          */
+
+        { }
 
         private void MenuItem_Click_2(object sender, RoutedEventArgs e) //доюавить
         {
@@ -193,6 +195,29 @@ namespace laba_2_4
                 text_mark_math.Text = ((data)somegrid.Items[somegrid.SelectedIndex]).math.ToString();
                 text_mark_phys.Text = ((data)somegrid.Items[somegrid.SelectedIndex]).phys.ToString();
             }
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            SQLiteConnection m_dbConnection;
+            m_dbConnection = new SQLiteConnection("Data Source=" + db_name + ";Version=3;");
+            m_dbConnection.Open();
+            string sql3 = " UPDATE name SET fio = '" + textbox_name.Text + "' WHERE uid =" + text_uid.Text + ";" + " UPDATE marks SET math = " + text_mark_math.Text + ", phys =" + text_mark_phys.Text + " WHERE uid =" + text_uid.Text;
+
+            SQLiteCommand command = new SQLiteCommand(sql3, m_dbConnection);
+
+            command.ExecuteNonQuery();
+
+
+
+            studs[somegrid.SelectedIndex].fio = textbox_name.Text;
+            ((data)somegrid.Items[somegrid.SelectedIndex]).fio = textbox_name.Text;
+            ((data)somegrid.Items[somegrid.SelectedIndex]).math = int.Parse(text_mark_math.Text);
+            ((data)somegrid.Items[somegrid.SelectedIndex]).phys = int.Parse(text_mark_phys.Text);
+
+
+            somegrid.Items.Refresh();
+            m_dbConnection.Close();
         }
     }
 }

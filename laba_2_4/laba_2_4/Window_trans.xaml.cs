@@ -31,15 +31,19 @@ namespace laba_2_4
             SQLiteDataReader reader = command1.ExecuteReader();
             while (reader.Read())
             {
-                if (Convert.ToInt32(reader["uid"]) == numb)
+                //datas[Convert.ToInt32(reader["uid"]).uid
+                if ((datas[Convert.ToInt32(reader["uid"])].uid) == numb)
                 {
                     int a = Convert.ToInt32(reader["uid"]);
                     lb_uid.Content = "Uid - " + a.ToString();
                     tb_fio.Text = reader["fio"].ToString();
                     tb_phys.Text = reader["phys"].ToString();
                     tb_math.Text = reader["math"].ToString();
+                    m_dbConnection.Close();
+                    break;
                 }
             }
+            m_dbConnection.Close();
         }
 
         private void Acept_Click(object sender, RoutedEventArgs e)
