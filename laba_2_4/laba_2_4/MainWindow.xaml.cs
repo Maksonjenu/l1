@@ -101,12 +101,12 @@ namespace laba_2_4
             SQLiteConnection m_dbConnection;
             m_dbConnection = new SQLiteConnection("Data Source=" + db_name + ";Version=3;");
             m_dbConnection.Open();
-            string sql1 = "DELETE FROM marks WHERE uid ="+somegrid.SelectedIndex+"; DELETE FROM name WHERE uid="+somegrid.SelectedIndex;
-            SQLiteCommand command = new SQLiteCommand(sql1, m_dbConnection);
+            string sql3 = " DELETE FROM name  WHERE uid = " + ((data)somegrid.Items[somegrid.SelectedIndex]).uid + ";" + " DELETE FROM marks  WHERE uid = " + ((data)somegrid.Items[somegrid.SelectedIndex]).uid;
+            SQLiteCommand command = new SQLiteCommand(sql3, m_dbConnection);
             command.ExecuteNonQuery();
+
             studs.RemoveAt(somegrid.SelectedIndex);
             somegrid.Items.Refresh();
-            m_dbConnection.Close();
         }
 
         private void MenuItem_Click_1(object sender, RoutedEventArgs e) //изменить чузен элемент
@@ -190,10 +190,17 @@ namespace laba_2_4
         {
             if (somegrid.SelectedIndex > -1)
             {
-                text_uid.Text = ((data)somegrid.Items[somegrid.SelectedIndex]).uid.ToString();
-                textbox_name.Text = ((data)somegrid.Items[somegrid.SelectedIndex]).fio;
-                text_mark_math.Text = ((data)somegrid.Items[somegrid.SelectedIndex]).math.ToString();
-                text_mark_phys.Text = ((data)somegrid.Items[somegrid.SelectedIndex]).phys.ToString();
+               try
+                {
+                    text_uid.Text = ((data)somegrid.Items[somegrid.SelectedIndex]).uid.ToString();
+                    textbox_name.Text = ((data)somegrid.Items[somegrid.SelectedIndex]).fio;
+                    text_mark_math.Text = ((data)somegrid.Items[somegrid.SelectedIndex]).math.ToString();
+                    text_mark_phys.Text = ((data)somegrid.Items[somegrid.SelectedIndex]).phys.ToString();
+                }
+                catch
+                { }
+
+
             }
         }
 
