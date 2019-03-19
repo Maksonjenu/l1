@@ -24,7 +24,7 @@ namespace Laba_2_5
     /// </summary>
     public partial class MainWindow : Window
     {
-        const int port = 8888;
+        const int port = 33333;
         //объект, прослушивающий порт
         static TcpListener listener;
         public MainWindow()

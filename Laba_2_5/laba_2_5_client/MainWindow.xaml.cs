@@ -27,9 +27,9 @@ namespace laba_2_5_client
        
         public string userName;
         public string message;
-        const int port = 8888;
+        const int port = 33333;
         //ip адрес сервера
-        const string address = "127.0.0.1";
+        const string address = "90.189.132.25";
         public MainWindow()
         {
             InitializeComponent();
@@ -47,6 +47,7 @@ namespace laba_2_5_client
             try
             {
                 //создание клиента
+            
                 client = new TcpClient(address, port);
                 //получение потока для обмена сообщениями
                 NetworkStream stream = client.GetStream();
@@ -91,9 +92,11 @@ namespace laba_2_5_client
         }
         private void St_Click(object sender, RoutedEventArgs e)
         {
-            Thread myThread1 = new Thread(new ThreadStart(Count1));
-            myThread1.Start();
-           
+            //for (int i = 0; i < 15; i++)
+         //   {
+                Thread myThread1 = new Thread(new ThreadStart(Count1));
+                myThread1.Start();
+           // }
            
         }
     }

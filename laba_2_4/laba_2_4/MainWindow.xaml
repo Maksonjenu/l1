@@ -20,7 +20,7 @@
 
             </MenuItem>
         </Menu>
-        <DataGrid x:Name="somegrid" HorizontalAlignment="Left" Height="229" Margin="172,30,0,0" VerticalAlignment="Top" Width="280" SelectedCellsChanged="Somegrid_SelectedCellsChanged">
+        <DataGrid x:Name="somegrid" HorizontalAlignment="Left" Height="229" Margin="172,30,0,0" VerticalAlignment="Top" Width="280" SelectedCellsChanged="Somegrid_SelectedCellsChanged" MouseDoubleClick="Somegrid_MouseDoubleClick">
 
         </DataGrid>
         <TextBox x:Name="textbox_name" HorizontalAlignment="Left" Height="23" Margin="10,59,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="125"/>

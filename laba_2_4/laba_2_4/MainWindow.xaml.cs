@@ -43,6 +43,7 @@ namespace laba_2_4
             rename.IsEnabled = false;
             addelem.IsEnabled = false;
             text_uid.IsReadOnly = true;
+            somegrid.IsReadOnly = true;
         }
 
         private void MenuItem_Click_4(object sender, RoutedEventArgs e) //save
@@ -157,30 +158,53 @@ namespace laba_2_4
                 string sql1 = "SELECT uid FROM marks ORDER BY uid DESC LIMIT 1";
                 SQLiteCommand command1 = new SQLiteCommand(sql1, m_dbConnection);
                 SQLiteDataReader reader = command1.ExecuteReader();
-                while (reader.Read())
+                if (reader == null)
                 {
-                    int a = Convert.ToInt32(reader["uid"])+1;
+                    int a = 0;
                     adds.uid_label.Content = a.ToString();
                 }
+                while (reader.Read())
+                {
+                    if (reader["uid"] == null)
+                    {
+                        int a = 0;
+                        adds.uid_label.Content = a.ToString();
+                    }
+                    else
+                    {
+                        int a = Convert.ToInt32(reader["uid"]) + 1;
+                        adds.uid_label.Content = a.ToString();
+                    }
+                }
+                
                 data data_ta = new data();
-                data_ta.fio = adds.tb_fio.Text;
-                data_ta.phys = Convert.ToInt32(adds.tb_phys.Text);
-                data_ta.math = Convert.ToInt32(adds.tb_math.Text);
-                data_ta.uid = Convert.ToInt32(adds.uid_label.Content);
-                string sql = "INSERT INTO name (uid,  fio ) VALUES (" + data_ta.uid + ",'" + data_ta.fio + "')";
-                SQLiteCommand command = new SQLiteCommand(sql, m_dbConnection);
-                command.ExecuteNonQuery();
-                string sql2 = "INSERT INTO  marks ( uid, math, phys ) VALUES (" + data_ta.uid + "," + data_ta.math + "," + data_ta.phys + ")";
-                command = new SQLiteCommand(sql2, m_dbConnection);
-                command.ExecuteNonQuery();
-                data dst = new data();
-                dst.fio = adds.tb_fio.Text;
-                dst.math = int.Parse(adds.tb_math.Text);
-                dst.phys = int.Parse(adds.tb_phys.Text);
-                dst.uid = int.Parse(adds.uid_label.Content.ToString());
-                studs.Add(dst);
-                somegrid.ItemsSource = null;
-                somegrid.ItemsSource = studs;
+                try
+                {
+                    if ((adds.tb_fio.Text).Length != 0) data_ta.fio = adds.tb_fio.Text;  else throw new FormatException("Не введено имя ");
+                    if (adds.tb_phys.Text.Length != 0)data_ta.phys = Convert.ToInt32(adds.tb_phys.Text);
+                    if (adds.tb_math.Text.Length != 0)data_ta.math = Convert.ToInt32(adds.tb_math.Text);
+                    data_ta.uid = Convert.ToInt32(adds.uid_label.Content);
+                    string sql = "INSERT INTO name (uid,  fio ) VALUES (" + data_ta.uid + ",'" + data_ta.fio + "')";
+                    SQLiteCommand command = new SQLiteCommand(sql, m_dbConnection);
+                    command.ExecuteNonQuery();
+                    string sql2 = "INSERT INTO  marks ( uid, math, phys ) VALUES (" + data_ta.uid + "," + data_ta.math + "," + data_ta.phys + ")";
+                    command = new SQLiteCommand(sql2, m_dbConnection);
+                    command.ExecuteNonQuery();
+                    data dst = new data();
+                    dst.fio = adds.tb_fio.Text;
+                    dst.uid = int.Parse(adds.uid_label.Content.ToString());
+                      if (adds.tb_math.Text.Length != 0) dst.math = int.Parse(adds.tb_math.Text);
+                      if (adds.tb_phys.Text.Length != 0) dst.phys = int.Parse(adds.tb_phys.Text);
+                        studs.Add(dst);
+                    somegrid.ItemsSource = studs;
+                    somegrid.Items.Refresh();
+                }
+                catch (FormatException ex)
+                {
+                    MessageBox.Show(ex.Message);
+                    somegrid.ItemsSource = null;
+                    somegrid.ItemsSource = studs;
+                }
                 m_dbConnection.Close();
             }
             
@@ -225,6 +249,12 @@ namespace laba_2_4
 
             somegrid.Items.Refresh();
             m_dbConnection.Close();
+        }
+
+        private void Somegrid_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            
+
         }
     }
 }

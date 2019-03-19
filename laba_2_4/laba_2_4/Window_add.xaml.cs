@@ -35,16 +35,20 @@ namespace laba_2_4
             string sql1 = "SELECT uid FROM marks ORDER BY uid DESC LIMIT 1";
             SQLiteCommand command1 = new SQLiteCommand(sql1, m_dbConnection);
             SQLiteDataReader reader = command1.ExecuteReader();
+                int a = 0;
+                uid_label.Content = a.ToString();
             while (reader.Read())
             {
-                int a = Convert.ToInt32(reader["uid"]) + 1;
+                 a = Convert.ToInt32(reader["uid"]) + 1;
                 uid_label.Content = a.ToString();
             }
+            m_dbConnection.Close();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             this.DialogResult = true;
+            
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
